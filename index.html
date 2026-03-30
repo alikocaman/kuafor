@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Modern ve lüks segmentte kuaför salonu web sitesi" />
+  <title>Maison Élégance | Kuaför Salonu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #111111;
+      --bg-soft: #1a1a1a;
+      --card: rgba(255, 255, 255, 0.06);
+      --line: rgba(212, 175, 55, 0.24);
+      --text: #f5f5f5;
+      --muted: #cfcfcf;
+      --gold: #d4af37;
+      --gold-soft: #f0d878;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 22px;
+      --container: min(1160px, calc(100% - 32px));
+      --header-h: 78px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(212, 175, 55, 0.08), transparent 22%),
+        linear-gradient(180deg, #111111 0%, #171717 100%);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: var(--container);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-title-wrap {
+      max-width: 700px;
+      margin-bottom: 34px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 10px;
+      color: var(--gold-soft);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 1.05;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 1rem;
+      max-width: 56ch;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      height: var(--header-h);
+      backdrop-filter: blur(14px);
+      background: rgba(17, 17, 17, 0.82);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .header-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--bg);
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
+      flex-shrink: 0;
+    }
+
+    .logo-text strong {
+      display: block;
+      font-size: 1rem;
+      letter-spacing: 0.06em;
+    }
+
+    .logo-text span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .desktop-nav ul,
+    .mobile-nav ul {
+      list-style: none;
+    }
+
+    .desktop-nav ul {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .desktop-nav a,
+    .mobile-nav a {
+      position: relative;
+      color: #ececec;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .desktop-nav a::after,
+    .mobile-nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 1px;
+      transform: scaleX(0);
+      transform-origin: left;
+      background: var(--gold);
+      transition: transform 0.22s ease;
+    }
+
+    .desktop-nav a:hover,
+    .mobile-nav a:hover {
+      color: var(--gold-soft);
+    }
+
+    .desktop-nav a:hover::after,
+    .mobile-nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-soft), var(--gold));
+      color: #111;
+      box-shadow: 0 16px 30px rgba(212, 175, 55, 0.22);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.02);
+      border-color: rgba(255, 255, 255, 0.16);
+      color: var(--white);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(212, 175, 55, 0.34);
+    }
+
+    .menu-toggle {
+      width: 48px;
+      height: 48px;
+      display: none;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 999px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-panel {
+      position: absolute;
+      top: calc(100% + 10px);
+      left: 16px;
+      right: 16px;
+      background: rgba(22, 22, 22, 0.98);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 16px;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: all 0.22s ease;
+    }
+
+    .mobile-panel.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .mobile-nav ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .mobile-cta {
+      width: 100%;
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100vh - var(--header-h));
+      display: flex;
+      align-items: center;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(9, 9, 9, 0.82) 0%, rgba(9, 9, 9, 0.56) 42%, rgba(9, 9, 9, 0.72) 100%),
+        url('https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      z-index: -2;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 75% 20%, rgba(212, 175, 55, 0.16), transparent 20%);
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 34px;
+      align-items: center;
+      padding: 56px 0 72px;
+    }
+
+    .hero-copy h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(3rem, 7vw, 5.6rem);
+      line-height: 0.95;
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-copy p {
+      max-width: 58ch;
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      color: #e3e3e3;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-badge {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #f0f0f0;
+      font-size: 0.95rem;
+    }
+
+    .hero-card {
+      margin-left: auto;
+      max-width: 410px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card .mini-label {
+      color: var(--gold-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .hero-card h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-card p {
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+
+    .hero-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .hero-list-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.035);
+    }
+
+    .hero-list-icon,
+    .service-icon,
+    .contact-icon,
+    .social-link {
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .hero-list-icon,
+    .service-icon,
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: rgba(212, 175, 55, 0.14);
+      color: var(--gold-soft);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      padding: 26px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.035));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.16);
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+
+    .service-card:hover,
+    .gallery-item:hover,
+    .form-card:hover,
+    .info-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(212, 175, 55, 0.3);
+    }
+
+    .service-icon {
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 220px;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: #1d1d1d;
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.72) 100%);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 16px;
+      z-index: 1;
+    }
+
+    .gallery-caption strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .gallery-caption span {
+      color: #d8d8d8;
+      font-size: 0.9rem;
+    }
+
+    .gallery-item.tall {
+      grid-row: span 2;
+    }
+
+    .gallery-item.wide {
+      grid-column: span 2;
+    }
+
+    .appointment-wrap {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .info-card,
+    .form-card {
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease, border-color 0.22s ease;
+    }
+
+    .info-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .info-card h3,
+    .form-card h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .info-card p,
+    .contact-text p,
+    .footer-note {
+      color: var(--muted);
+    }
+
+    .info-points {
+      display: grid;
+      gap: 14px;
+    }
+
+    .info-point {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .form-card {
+      padding: 28px;
+    }
+
+    .appointment-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field label {
+      font-weight: 600;
+      color: #f0f0f0;
+      font-size: 0.95rem;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field input::placeholder,
+    .field textarea::placeholder {
+      color: #a5a5a5;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: rgba(212, 175, 55, 0.5);
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+    }
+
+    .field textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-footnote {
+      color: #bdbdbd;
+      font-size: 0.9rem;
+    }
+
+    .site-footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(10, 10, 10, 0.92);
+      padding: 30px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.9fr 0.9fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .footer-col h4 {
+      margin-bottom: 14px;
+      font-size: 1.05rem;
+    }
+
+    .footer-col p,
+    .footer-col li,
+    .footer-col a {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+    }
+
+    .contact-text strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--white);
+      font-size: 0.96rem;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .social-link {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(212, 175, 55, 0.35);
+      background: rgba(212, 175, 55, 0.12);
+    }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 22px;
+      margin-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      color: #a9a9a9;
+      font-size: 0.92rem;
+    }
+
+    .map-link {
+      color: var(--gold-soft);
+      font-weight: 600;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .appointment-wrap,
+      .footer-grid,
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-grid {
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      :root {
+        --header-h: 74px;
+      }
+
+      .desktop-nav,
+      .desktop-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid,
+      .appointment-wrap,
+      .footer-grid,
+      .services-grid,
+      .gallery-grid,
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        padding: 42px 0 58px;
+      }
+
+      .hero-card {
+        margin-left: 0;
+        max-width: none;
+      }
+
+      .gallery-grid {
+        grid-auto-rows: 250px;
+      }
+
+      .gallery-item.wide,
+      .gallery-item.tall {
+        grid-column: span 1;
+        grid-row: span 1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .section {
+        padding: 72px 0;
+      }
+
+      .container {
+        width: min(100% - 24px, 100%);
+      }
+
+      .logo-text span {
+        display: none;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.9rem;
+      }
+
+      .hero-copy p,
+      .section-desc,
+      .service-card p,
+      .info-card p,
+      .footer-col p,
+      .footer-col li,
+      .footer-col a {
+        font-size: 0.95rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-badges {
+        flex-direction: column;
+      }
+
+      .service-card,
+      .info-card,
+      .form-card,
+      .hero-card {
+        padding: 22px;
+      }
+
+      .field input,
+      .field select,
+      .field textarea {
+        padding: 14px 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#anasayfa" class="logo" aria-label="Maison Élégance ana sayfa">
+        <div class="logo-mark">M</div>
+        <div class="logo-text">
+          <strong>MAISON ÉLÉGANCE</strong>
+          <span>Luxury Hair Studio</span>
+        </div>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Masaüstü navigasyon">
+        <ul>
+          <li><a href="#anasayfa">Ana Sayfa</a></li>
+          <li><a href="#hizmetler">Hizmetler</a></li>
+          <li><a href="#galeri">Galeri</a></li>
+          <li><a href="#randevu">Randevu</a></li>
+          <li><a href="#iletisim">İletişim</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-primary desktop-cta" href="#randevu">Randevu Al</a>
+        <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobilePanel" aria-label="Menüyü aç">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <div class="mobile-panel" id="mobilePanel">
+        <nav class="mobile-nav" aria-label="Mobil navigasyon">
+          <ul>
+            <li><a href="#anasayfa">Ana Sayfa</a></li>
+            <li><a href="#hizmetler">Hizmetler</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#randevu">Randevu</a></li>
+            <li><a href="#iletisim">İletişim</a></li>
+          </ul>
+        </nav>
+        <a class="btn btn-primary mobile-cta" href="#randevu">Randevu Al</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="anasayfa">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <span class="eyebrow">Zarafet • Stil • Işıltı</span>
+          <h1>Tarzınızı Keşfedin, Işığınızı Yansıtın.</h1>
+          <p>
+            Modern çizgiler, lüks atmosfer ve kişiye özel saç tasarımı yaklaşımıyla güzelliğinizi sıradanın ötesine taşıyoruz.
+            Her dokunuşta sofistike, her detayda kusursuz bir deneyim.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#randevu" class="btn btn-primary">Hemen Randevu Oluştur</a>
+            <a href="#galeri" class="btn btn-outline">Portfolyoyu İncele</a>
+          </div>
+
+          <div class="hero-badges">
+            <div class="hero-badge">Premium Bakım Ürünleri</div>
+            <div class="hero-badge">Uzman Stil Danışmanlığı</div>
+            <div class="hero-badge">Özel Gelin Paketi</div>
+          </div>
+        </div>
+
+        <aside class="hero-card reveal">
+          <div>
+            <div class="mini-label">Salon Deneyimi</div>
+            <h2>Lüks, sıcak ve kişisel</h2>
+            <p>
+              Saç stilinizi yüz hatlarınıza, yaşam tarzınıza ve enerjinize uygun şekilde tasarlıyoruz.
+            </p>
+          </div>
+
+          <div class="hero-list">
+            <div class="hero-list-item">
+              <div class="hero-list-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 3l2.4 4.87 5.37.78-3.89 3.79.92 5.35L12 15.95 7.2 17.79l.92-5.35L4.23 8.65l5.37-.78L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>İmzalı Kesim Deneyimi</strong>
+                <p>Yüz tipinize ve saç yapınıza uygun profesyonel şekillendirme.</p>
+              </div>
+            </div>
+
+            <div class="hero-list-item">
+              <div class="hero-list-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 21s-6-4.35-6-10a6 6 0 1112 0c0 5.65-6 10-6 10z" stroke="currentColor" stroke-width="1.6"/>
+                  <circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.6"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Merkezi Konum</strong>
+                <p>Kolay ulaşılabilir, zarif ve konforlu salon atmosferi.</p>
+              </div>
+            </div>
+
+            <div class="hero-list-item">
+              <div class="hero-list-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M7 4h10M7 8h10M7 12h6M7 16h10M7 20h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div>
+                <strong>Hızlı Online Randevu</strong>
+                <p>Mobil uyumlu form ile saniyeler içinde randevunuzu planlayın.</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="hizmetler">
+      <div class="container">
+        <div class="section-title-wrap reveal">
+          <span class="eyebrow">Hizmetler</span>
+          <h2 class="section-title">Her dokunuşta seçkin bir bakım.</h2>
+          <p class="section-desc">
+            Saçınızın ihtiyacına göre kişiselleştirilmiş premium uygulamalarımızla stilinizi öne çıkarıyoruz.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 7l6 6M11 7l-6 6M13 4l6 16M18 4l-2 5M20 13l-2 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Kesim & Şekillendirme</h3>
+            <p>Modern trendler ve yüz analizine göre kişiye özel kesim, fön ve stil dokunuşları.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3c2.6 3.27 5 6.24 5 9a5 5 0 11-10 0c0-2.76 2.4-5.73 5-9z" stroke="currentColor" stroke-width="1.7"/>
+                <path d="M10 13c.4 1.2 1.15 1.9 2.5 2.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Boya & Balayage</h3>
+            <p>Doğal geçişli renkler, ışıltılar ve profesyonel tonlama ile çarpıcı sonuçlar.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 3l1.8 4.6L18 9.4l-3.3 2.7 1 4.9L12 14.8 8.3 17l1-4.9L6 9.4l4.2-1.8L12 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Onarıcı Bakım</h3>
+            <p>Nem, parlaklık ve güç kazandıran profesyonel bakım ritüelleri ve saç terapileri.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <div class="service-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 5l2 2 2-2 2 2-2 2 2 2-2 2-2-2-2 2-2-2 2-2-2-2 2-2 2 2zM12 13v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Gelin Saçı & Özel Gün</h3>
+            <p>Düğün, nişan ve davetler için kalıcı, zarif ve fotojenik saç tasarımları.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="galeri">
+      <div class="container">
+        <div class="section-title-wrap reveal">
+          <span class="eyebrow">Galeri</span>
+          <h2 class="section-title">İlham veren dönüşümler.</h2>
+          <p class="section-desc">
+            Salonumuzda hayat bulan modern kesimler, yumuşak geçişli renkler ve zamansız saç tasarımlarından seçkiler.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item tall reveal">
+            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Dalgalı saç tasarımı" />
+            <figcaption class="gallery-caption">
+              <strong>Soft Waves</strong>
+              <span>Zamansız, hacimli görünüm</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item wide reveal">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80" alt="Renk uygulaması" />
+            <figcaption class="gallery-caption">
+              <strong>Luxury Color</strong>
+              <span>Işıltılı ve doğal ton geçişleri</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=900&q=80" alt="Kısa saç kesimi" />
+            <figcaption class="gallery-caption">
+              <strong>Modern Cut</strong>
+              <span>Keskin ve sofistike hatlar</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=900&q=80" alt="Topuz saç modeli" />
+            <figcaption class="gallery-caption">
+              <strong>Bridal Glow</strong>
+              <span>Özel günler için zarafet</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item reveal">
+            <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80" alt="Bakımlı uzun saç" />
+            <figcaption class="gallery-caption">
+              <strong>Gloss Treatment</strong>
+              <span>Canlı ve parlak dokular</span>
+            </figcaption>
+          </figure>
+
+          <figure class="gallery-item wide reveal">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80" alt="Katlı saç kesimi" />
+            <figcaption class="gallery-caption">
+              <strong>Signature Style</strong>
+              <span>Kişisel çizginizi yansıtan görünüm</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="randevu">
+      <div class="container">
+        <div class="section-title-wrap reveal">
+          <span class="eyebrow">Randevu</span>
+          <h2 class="section-title">Yeni görünümünüz için ilk adımı atın.</h2>
+          <p class="section-desc">
+            Formu dakikalar içinde doldurun, ekibimiz en kısa sürede sizinle iletişime geçsin.
+          </p>
+        </div>
+
+        <div class="appointment-wrap">
+          <div class="info-card reveal">
+            <div>
+              <h3>VIP salon deneyimi</h3>
+              <p>
+                Rahat atmosfer, premium ürünler ve stil uzmanlarımızla kişiselleştirilmiş saç tasarımı deneyimi sizi bekliyor.
+              </p>
+            </div>
+
+            <div class="info-points">
+              <div class="info-point">
+                <div class="contact-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M8 3h8M6 7h12M7 21h10a2 2 0 002-2V9H5v10a2 2 0 002 2z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Esnek tarih seçimi</strong>
+                  <p>Mobil uyumlu tarih alanı sayesinde kolay planlama.</p>
+                </div>
+              </div>
+
+              <div class="info-point">
+                <div class="contact-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M6.62 10.79a15.46 15.46 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.1.37 2.28.56 3.49.56a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.21.19 2.39.56 3.49a1 1 0 01-.24 1.01l-2.2 2.29z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </div>
+                <div>
+                  <strong>Hızlı geri dönüş</strong>
+                  <p>Randevu talepleriniz için kısa sürede telefonla teyit sağlanır.</p>
+                </div>
+              </div>
+
+              <div class="info-point">
+                <div class="contact-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 7l8 5 8-5M5 19h14a1 1 0 001-1V7a1 1 0 00-1-1H5a1 1 0 00-1 1v11a1 1 0 001 1z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <strong>Kişisel not ekleyin</strong>
+                  <p>İstediğiniz görünümü veya özel taleplerinizi bize iletebilirsiniz.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-card reveal">
+            <h3>Randevu Formu</h3>
+            <form class="appointment-form" id="appointmentForm">
+              <div class="form-row">
+                <div class="field">
+                  <label for="name">Ad Soyad</label>
+                  <input type="text" id="name" name="name" placeholder="Adınızı ve soyadınızı girin" required />
+                </div>
+                <div class="field">
+                  <label for="phone">Telefon</label>
+                  <input type="tel" id="phone" name="phone" inputmode="tel" placeholder="05xx xxx xx xx" required />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="field">
+                  <label for="date">Tarih</label>
+                  <input type="date" id="date" name="date" required />
+                </div>
+                <div class="field">
+                  <label for="service">Hizmet Seçimi</label>
+                  <select id="service" name="service" required>
+                    <option value="">Bir hizmet seçin</option>
+                    <option value="kesim">Kesim & Şekillendirme</option>
+                    <option value="boya">Boya & Balayage</option>
+                    <option value="bakim">Onarıcı Bakım</option>
+                    <option value="gelin">Gelin Saçı & Özel Gün</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="message">Ek Not</label>
+                <textarea id="message" name="message" placeholder="Saç uzunluğunuz, istediğiniz model veya özel notlarınız..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary">Talebi Gönder</button>
+              <p class="form-footnote">Bu form demo amaçlıdır. Gerçek kullanım için bir backend veya form servisine bağlanmalıdır.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="iletisim">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="margin-bottom: 14px;">
+            <div class="logo-mark">M</div>
+            <div class="logo-text">
+              <strong>MAISON ÉLÉGANCE</strong>
+              <span>Luxury Hair Studio</span>
+            </div>
+          </div>
+          <p class="footer-note">
+            Kusursuz saç tasarımı, seçkin bakım ritüelleri ve modern salon deneyimini tek adreste buluşturuyoruz.
+          </p>
+          <div class="socials" aria-label="Sosyal medya bağlantıları">
+            <a class="social-link" href="#" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a class="social-link" href="#" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M14 8h3V4h-3c-3.3 0-5 1.7-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.7.3-1 1-1z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="social-link" href="#" aria-label="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 11.5A8.5 8.5 0 105.2 17.7L4 21l3.4-1a8.5 8.5 0 0012.6-8.5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9.4 8.8c.2 1.1 1.8 3.4 4 4.5.4.2.9.2 1.1-.1l1-1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Çalışma Saatleri</h4>
+          <ul>
+            <li>Pazartesi - Cuma: 09.00 - 20.00</li>
+            <li>Cumartesi: 10.00 - 19.00</li>
+            <li>Pazar: Kapalı</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Hızlı Linkler</h4>
+          <ul>
+            <li><a href="#anasayfa">Ana Sayfa</a></li>
+            <li><a href="#hizmetler">Hizmetler</a></li>
+            <li><a href="#galeri">Galeri</a></li>
+            <li><a href="#randevu">Randevu Formu</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>İletişim</h4>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s-6-4.35-6-10a6 6 0 1112 0c0 5.65-6 10-6 10z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="11" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg>
+            </div>
+            <div class="contact-text">
+              <strong>Adres</strong>
+              <p>Bağdat Caddesi No: 120, Kadıköy / İstanbul</p>
+              <a class="map-link" href="https://maps.google.com" target="_blank" rel="noopener noreferrer">Google Haritalar'da Aç</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M6.62 10.79a15.46 15.46 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.1.37 2.28.56 3.49.56a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.21.19 2.39.56 3.49a1 1 0 01-.24 1.01l-2.2 2.29z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="contact-text">
+              <strong>Telefon</strong>
+              <p>+90 555 123 45 67</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 7l8 5 8-5M5 19h14a1 1 0 001-1V7a1 1 0 00-1-1H5a1 1 0 00-1 1v11a1 1 0 001 1z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="contact-text">
+              <strong>E-posta</strong>
+              <p>info@maison-elegance.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Maison Élégance. Tüm hakları saklıdır.</span>
+        <span>Modern, lüks ve tamamen mobil uyumlu kuaför salonu arayüzü.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobilePanel = document.getElementById('mobilePanel');
+    const mobileLinks = mobilePanel.querySelectorAll('a');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = mobilePanel.classList.toggle('open');
+      menuToggle.classList.toggle('active', isOpen);
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Menüyü kapat' : 'Menüyü aç');
+    });
+
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        mobilePanel.classList.remove('open');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Menüyü aç');
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      const isClickInsideHeader = event.target.closest('.site-header');
+      if (!isClickInsideHeader && mobilePanel.classList.contains('open')) {
+        mobilePanel.classList.remove('open');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Menüyü aç');
+      }
+    });
+
+    const dateInput = document.getElementById('date');
+    const today = new Date();
+    const offset = today.getTimezoneOffset();
+    const localDate = new Date(today.getTime() - offset * 60000).toISOString().split('T')[0];
+    dateInput.min = localDate;
+
+    const appointmentForm = document.getElementById('appointmentForm');
+    appointmentForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      alert(`${name ? name + ', ' : ''}randevu talebiniz alınmıştır. En kısa sürede sizinle iletişime geçeceğiz.`);
+      appointmentForm.reset();
+      dateInput.min = localDate;
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>
